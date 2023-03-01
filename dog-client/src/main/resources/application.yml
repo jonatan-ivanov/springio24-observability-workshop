@@ -1,0 +1,54 @@
+spring:
+  application:
+    name: dog-client
+    org: petclinic
+  jmx:
+    enabled: true
+  mvc:
+    problemdetails:
+      enabled: true
+
+server:
+  port: 8081
+  error:
+    include-message: always
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include:
+        - "*"
+    jmx:
+      exposure:
+        include:
+        - "*"
+  endpoint:
+    env:
+      show-values: always
+  observations:
+    key-values:
+      org: ${spring.application.org}
+  metrics:
+    tags:
+      application: ${spring.application.name}
+      org: ${spring.application.org}
+    distribution:
+      percentiles-histogram:
+#        all: true
+        http.server.requests: true
+        http.client.requests: true
+  tracing:
+    sampling:
+      probability: 1.0
+  info:
+    java:
+      enabled: true
+    os:
+      enabled: true
+    process:
+      enabled: true
+
+logging:
+  level:
+    org.springframework.web.servlet.DispatcherServlet: DEBUG
