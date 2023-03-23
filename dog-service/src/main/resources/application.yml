@@ -1,6 +1,7 @@
 spring:
   application:
     name: dog-service
+    org: petclinic
   datasource:
     url: "jdbc:postgresql://localhost:5432/dog-db"
     username: "dog"
