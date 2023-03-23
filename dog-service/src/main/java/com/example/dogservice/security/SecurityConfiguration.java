@@ -3,6 +3,8 @@ package com.example.dogservice.security;
 import java.util.List;
 import java.util.stream.Collectors;
 
+import io.micrometer.observation.ObservationPredicate;
+
 import org.springframework.boot.actuate.autoconfigure.security.servlet.EndpointRequest;
 import org.springframework.boot.context.properties.PropertyMapper;
 import org.springframework.context.annotation.Bean;
@@ -21,6 +23,11 @@ import org.springframework.util.StringUtils;
  */
 @Configuration(proxyBeanMethods = false)
 public class SecurityConfiguration {
+
+	@Bean
+	ObservationPredicate noSpringSecurityObservations() {
+		return (name, context) -> !name.startsWith("spring.security.");
+	}
 
 	@Bean
 	SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
