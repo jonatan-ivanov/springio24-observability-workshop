@@ -25,7 +25,7 @@ public class SecurityConfiguration {
 	@Bean
 	SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
 		http.authorizeHttpRequests((requests) -> {
-			requests.requestMatchers("/dogs").permitAll();
+			requests.requestMatchers("/dogs", "/actuator/**").permitAll();
 			requests.requestMatchers(EndpointRequest.toAnyEndpoint()).hasAnyRole("admin");
 			requests.anyRequest().authenticated();
 		});
