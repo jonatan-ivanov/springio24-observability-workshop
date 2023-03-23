@@ -41,6 +41,10 @@ management:
     tags:
       application: ${spring.application.name}
       org: ${spring.application.org}
+    distribution:
+      percentiles-histogram:
+        # all: true
+        http.server.requests: true
 
 application:
   security:
