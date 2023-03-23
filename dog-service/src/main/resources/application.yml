@@ -45,6 +45,13 @@ management:
       percentiles-histogram:
         # all: true
         http.server.requests: true
+  tracing:
+    sampling:
+      probability: 1.0
+
+logging:
+  level:
+    org.springframework.web.servlet.DispatcherServlet: DEBUG
 
 application:
   security:
