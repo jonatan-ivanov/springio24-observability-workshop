@@ -48,6 +48,13 @@ management:
   tracing:
     sampling:
       probability: 1.0
+  info:
+    java:
+      enabled: true
+    os:
+      enabled: true
+    process:
+      enabled: true
 
 logging:
   level:
